@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tertiary SA · Universities & Colleges Directory</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .app {
+      max-width: 1400px;
+      width: 100%;
+    }
+
+    /* ---------- HOMEPAGE ---------- */
+    .homepage {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 40px;
+      padding: 3rem 2rem;
+      position: relative;
+      background: linear-gradient(135deg, rgba(26, 82, 118, 0.85), rgba(46, 134, 193, 0.80)),
+        url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      margin-bottom: 2rem;
+    }
+
+    .homepage .content {
+      max-width: 800px;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .homepage .logo {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 0.5rem;
+    }
+
+    .homepage .logo i {
+      color: #f1c40f;
+    }
+
+    .homepage .logo .tertiary-sa {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.2rem 1.8rem;
+      border-radius: 60px;
+      font-size: 2.2rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .homepage .badge-za {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      padding: 0.3rem 1.5rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .homepage .badge-za i {
+      color: #f1c40f;
+    }
+
+    .homepage h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .homepage .motivating-message {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin: 1rem auto 1.8rem;
+      max-width: 650px;
+      line-height: 1.7;
+      opacity: 0.95;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .homepage .motivating-message i {
+      color: #f1c40f;
+      margin: 0 6px;
+    }
+
+    .homepage .motivating-message .author {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-top: 0.3rem;
+      opacity: 0.8;
+    }
+
+    .homepage .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem 3rem;
+      margin: 1.5rem 0;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .homepage .stats-row span {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .homepage .stats-row i {
+      margin-right: 8px;
+      color: #f1c40f;
+    }
+
+    .homepage .btn-get-started {
+      background: #f1c40f;
+      color: #0b1f33;
+      border: none;
+      padding: 0.9rem 3rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 30px rgba(241, 196, 15, 0.35);
+      margin-top: 0.5rem;
+      text-decoration: none;
+    }
+
+    .homepage .btn-get-started:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(241, 196, 15, 0.5);
+      background: #f5d627;
+    }
+
+    .homepage .btn-get-started i {
+      transition: transform 0.3s ease;
+    }
+
+    .homepage .btn-get-started:hover i {
+      transform: translateX(6px);
+    }
+
+    /* ---------- MAIN APP (hidden until button click) ---------- */
+    .main-app {
+      display: none;
+    }
+
+    .main-app.visible {
+      display: block;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.8rem;
+      gap: 0.5rem;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0b1f33;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header h1 i {
+      color: #1a5276;
+    }
+
+    .header h1 .tertiary-sa {
+      background: linear-gradient(135deg, #1a5276, #2e86c1);
+      color: #fff;
+      padding: 0.2rem 1.5rem;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-za-main {
+      background: #1a3a4b;
+      color: #fff;
+      padding: 0.3rem 1.5rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-za-main i {
+      color: #f1c40f;
+    }
+
+    /* ---------- TABS ---------- */
+    .tabs-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #dce6f0;
+      padding-bottom: 0.5rem;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a5a7a;
+      cursor: pointer;
+      border-radius: 40px;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      background: #eaf0f8;
+    }
+
+    .tab-btn.active {
+      background: #1a5276;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(26, 82, 118, 0.25);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* ---------- BACK TO HOME BUTTON ---------- */
+    .back-home-btn {
+      background: #1a5276;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .back-home-btn:hover {
+      background: #0e3b55;
+      transform: scale(1.02);
+    }
+
+    /* ---------- OTHER STYLES ---------- */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      background: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 60px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e2eaf2;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+
+    .search-wrap {
+      flex: 2;
+      min-width: 200px;
+      display: flex;
+      align-items: center;
+      background: #f0f5fb;
+      border-radius: 40px;
+      padding: 0.1rem 0.1rem 0.1rem 1.2rem;
+      border: 1px solid #d8e2ed;
+    }
+
+    .search-wrap i {
+      color: #5f7d9c;
+    }
+
+    .search-wrap input {
+      border: none;
+      padding: 0.7rem 0.7rem 0.7rem 0.5rem;
+      width: 100%;
+      background: transparent;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1rem;
+    }
+
+    .filter-group select {
+      background: #fff;
+      border: 1px solid #d0dcec;
+      border-radius: 40px;
+      padding: 0.5rem 1.4rem 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1a2e44;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-group select:focus {
+      border-color: #1a5276;
+    }
+
+    .clear-btn {
+      background: transparent;
+      border: 1px solid #ccd8e8;
+      border-radius: 40px;
+      padding: 0.45rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #2c4766;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .clear-btn:hover {
+      background: #eaeef6;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: #25486a;
+      border-bottom: 1px solid #dfe8f2;
+      padding-bottom: 0.5rem;
+    }
+
+    .stats span i {
+      color: #1a5276;
+      margin-right: 6px;
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+
+    .store-card {
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eaf0f8;
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .store-card:hover {
+      box-shadow: 0 16px 32px -8px rgba(0, 20, 40, 0.08);
+      transform: translateY(-3px);
+      border-color: #cbdcee;
+    }
+
+    .card-img {
+      height: 140px;
+      background: #eef3fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      color: #1a5276;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-color: #d4e0ed;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-img .type-flag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #1a5276;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      box-shadow: 0 2px 8px rgba(26, 82, 118, 0.3);
+    }
+
+    .card-body {
+      padding: 1.2rem 1.2rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .store-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0b1f33;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .store-name .type-badge {
+      background: #e2ecf9;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      color: #1f4468;
+      text-transform: uppercase;
+    }
+
+    .store-location {
+      font-size: 0.85rem;
+      color: #3e6182;
+      margin: 0.2rem 0 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .store-location i {
+      color: #d35400;
+      width: 16px;
+    }
+
+    .status-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin: 0.3rem 0 0.5rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #e6f5ea;
+      color: #1a6b3a;
+      padding: 0.15rem 1rem 0.15rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-badge.closed {
+      background: #fde8e8;
+      color: #a13d3d;
+    }
+
+    .website-btn {
+      background: #1a5276;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 0.2rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+
+    .website-btn:hover {
+      background: #0e3b55;
+      transform: scale(1.02);
+    }
+
+    .catalogue-section {
+      margin: 0.7rem 0 0.2rem;
+      background: #f6faff;
+      border-radius: 20px;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #e2ecf7;
+    }
+
+    .catalogue-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: #3b6085;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      cursor: pointer;
+    }
+
+    .catalogue-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 0.6rem;
+    }
+
+    .cat-item {
+      background: #fff;
+      border-radius: 30px;
+      padding: 0.1rem 0.9rem;
+      font-size: 0.7rem;
+      border: 1px solid #d7e2f0;
+      color: #1f3f62;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .cat-item:hover {
+      background: #eaf3fb;
+      border-color: #1a5276;
+    }
+
+    .course-detail {
+      margin-top: 8px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #dce8f5;
+      font-size: 0.75rem;
+      color: #1a3a5e;
+      display: none;
+    }
+
+    .course-detail.show {
+      display: block;
+    }
+
+    .course-detail .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1rem;
+      margin: 0.2rem 0;
+    }
+
+    .course-detail .label {
+      font-weight: 600;
+      color: #1a5276;
+      min-width: 80px;
+    }
+
+    .bursary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .bursary-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 1.5rem;
+      border: 1px solid #eaf0f8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .bursary-card h3 {
+      color: #0b1f33;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.3rem;
+    }
+
+    .bursary-card h3 i {
+      color: #1a5276;
+    }
+
+    .bursary-card .provider {
+      color: #3e6182;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .bursary-card .provider a {
+      color: #1a5276;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .bursary-card .provider a:hover {
+      text-decoration: underline;
+    }
+
+    .bursary-card .details {
+      font-size: 0.85rem;
+      color: #1f3f62;
+    }
+
+    .bursary-card .details .label {
+      font-weight: 600;
+      color: #1a5276;
+      display: inline-block;
+      min-width: 80px;
+    }
+
+    .bursary-card .tag {
+      display: inline-block;
+      background: #e2ecf9;
+      padding: 0.15rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1f4468;
+      margin-right: 4px;
+      margin-top: 3px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid #eaf0f8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .info-card h3 {
+      color: #0b1f33;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card h3 i {
+      color: #1a5276;
+    }
+
+    .info-card p,
+    .info-card li {
+      font-size: 0.85rem;
+      color: #2a4a6a;
+      line-height: 1.5;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-card li {
+      padding: 0.3rem 0;
+      border-bottom: 1px solid #eef4fa;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card li:last-child {
+      border-bottom: none;
+    }
+
+    .info-card li i {
+      color: #1a5276;
+      width: 20px;
+    }
+
+    .settings-section,
+    .terms-section,
+    .about-section {
+      background: #fff;
+      border-radius: 28px;
+      padding: 2rem;
+      border: 1px solid #eaf0f8;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .settings-section h2,
+    .terms-section h2,
+    .about-section h2 {
+      color: #0b1f33;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .settings-section h2 i,
+    .terms-section h2 i,
+    .about-section h2 i {
+      color: #1a5276;
+    }
+
+    .settings-section ul {
+      list-style: none;
+    }
+
+    .settings-section li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #eef4fa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .settings-section li:last-child {
+      border-bottom: none;
+    }
+
+    .toggle-switch {
+      width: 50px;
+      height: 26px;
+      background: #d0dcec;
+      border-radius: 40px;
+      cursor: pointer;
+      position: relative;
+      transition: 0.2s;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch.active {
+      background: #1a5276;
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+
+    .toggle-switch.active::after {
+      left: 27px;
+    }
+
+    .settings-section select {
+      background: #fff;
+      border: 1px solid #d0dcec;
+      border-radius: 30px;
+      padding: 0.3rem 1rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .settings-section .btn {
+      background: #1a5276;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 0.3rem 1.2rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+
+    .settings-section .btn:hover {
+      background: #0e3b55;
+    }
+
+    .settings-section .btn-danger {
+      background: #e74c3c;
+    }
+
+    .settings-section .btn-danger:hover {
+      background: #c0392b;
+    }
+
+    .settings-section .btn-success {
+      background: #27ae60;
+    }
+
+    .settings-section .btn-success:hover {
+      background: #1e8449;
+    }
+
+    .settings-section .toast {
+      background: #1a5276;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    .terms-section p,
+    .about-section p {
+      margin: 0.8rem 0;
+      line-height: 1.6;
+      color: #2a4a6a;
+    }
+
+    .terms-section ul,
+    .about-section ul {
+      margin-left: 1.5rem;
+      color: #2a4a6a;
+    }
+
+    .terms-section .section-title,
+    .about-section .section-title {
+      font-weight: 700;
+      color: #0b1f33;
+      margin-top: 1.2rem;
+    }
+
+    .no-result {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 3rem 0;
+      color: #5f7a9a;
+    }
+
+    .no-result i {
+      font-size: 2.5rem;
+      color: #bccde0;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #5f7c9a;
+      text-align: center;
+      border-top: 1px solid #e2eaf2;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .developer-credit {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(26, 82, 118, 0.08);
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid rgba(26, 82, 118, 0.1);
+    }
+
+    .developer-credit h3 {
+      color: #1a5276;
+      margin-bottom: 0.3rem;
+    }
+
+    .developer-credit p {
+      color: #3e6182;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 650px) {
+      .toolbar {
+        border-radius: 30px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .homepage .logo {
+        font-size: 2.2rem;
+        flex-wrap: wrap;
+      }
+      .homepage .logo .tertiary-sa {
+        font-size: 1.5rem;
+        padding: 0.1rem 1.2rem;
+      }
+      .homepage h1 {
+        font-size: 2rem;
+      }
+      .homepage .motivating-message {
+        font-size: 1.1rem;
+      }
+      .homepage .stats-row {
+        gap: 0.8rem 1.5rem;
+        padding: 0.5rem 1rem;
+      }
+      .homepage .stats-row span {
+        font-size: 0.9rem;
+      }
+      .homepage .btn-get-started {
+        padding: 0.7rem 2rem;
+        font-size: 1rem;
+      }
+      .header h1 {
+        font-size: 1.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .header h1 .tertiary-sa {
+        font-size: 1rem;
+      }
+      .tab-btn {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+
+    <!-- ============================================================ -->
+    <!-- HOMEPAGE -->
+    <!-- ============================================================ -->
+    <div class="homepage" id="homepage">
+      <div class="content">
+        <div class="logo">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="tertiary-sa">Tertiary SA</span>
+        </div>
+        <div class="badge-za"><i class="fas fa-map-pin"></i> registered · South Africa</div>
+
+        <h1>Your Gateway to South African Tertiary Education</h1>
+
+        <div class="motivating-message">
+          <i class="fas fa-quote-left"></i>
+          Education is the most powerful weapon which you can use to change the world.
+          <i class="fas fa-quote-right"></i>
+          <span class="author">— Nelson Mandela</span>
+        </div>
+
+        <div class="stats-row">
+          <span><i class="fas fa-university"></i> 29 Universities</span>
+          <span><i class="fas fa-school"></i> 1,490 Colleges</span>
+          <span><i class="fas fa-map-marker-alt"></i> 9 Provinces</span>
+        </div>
+
+        <a href="#" class="btn-get-started" id="getStartedBtn">
+          Get Started <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MAIN APP (hidden initially) -->
+    <!-- ============================================================ -->
+    <div class="main-app" id="mainApp">
+
+      <!-- Header -->
+      <div class="header">
+        <h1>
+          <i class="fas fa-graduation-cap"></i>
+          <span class="tertiary-sa">Tertiary SA</span>
+        </h1>
+        <div class="badge-za-main"><i class="fas fa-map-pin"></i> registered · South Africa</div>
+        <button class="back-home-btn" id="backHomeBtn"><i class="fas fa-home"></i> Back to Home</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs-wrapper">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="institutions"><i class="fas fa-university"></i> Institutions</button>
+          <button class="tab-btn" data-tab="bursaries"><i class="fas fa-hand-holding-heart"></i> Bursaries</button>
+          <button class="tab-btn" data-tab="student-services"><i class="fas fa-hands-helping"></i> Student Services</button>
+          <button class="tab-btn" data-tab="alumni"><i class="fas fa-user-graduate"></i> Alumni</button>
+          <button class="tab-btn" data-tab="about"><i class="fas fa-info-circle"></i> About</button>
+          <button class="tab-btn" data-tab="settings"><i class="fas fa-sliders-h"></i> Settings</button>
+          <button class="tab-btn" data-tab="terms"><i class="fas fa-file-contract"></i> Terms</button>
+        </div>
+      </div>
+
+      <!-- Tab: Institutions -->
+      <div class="tab-content active" id="tab-institutions">
+        <div class="toolbar">
+          <div class="search-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search name, city, course...">
+          </div>
+          <div class="filter-group">
+            <select id="typeFilter"><option value="all">All types</option><option value="University">University</option><option value="College">College</option></select>
+            <select id="sectorFilter"><option value="all">All sectors</option><option value="Public">Public</option><option value="Private">Private</option></select>
+            <select id="statusFilter"><option value="all">All status</option><option value="open">Open</option><option value="closed">Closed</option></select>
+            <button class="clear-btn" id="clearFiltersBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+          </div>
+        </div>
+        <div class="stats">
+          <span><i class="fas fa-university"></i> <span id="storeCount">0</span> institutions</span>
+          <span><i class="fas fa-check-circle" style="color:#27ae60;"></i> <span id="openCount">0</span> open for applications</span>
+        </div>
+        <div class="store-grid" id="storeGrid"></div>
+      </div>
+
+      <!-- Tab: Bursaries -->
+      <div class="tab-content" id="tab-bursaries">
+        <h2 style="color:#0b1f33;margin-bottom:0.5rem;"><i class="fas fa-hand-holding-heart" style="color:#1a5276;"></i> South African Bursaries</h2>
+        <p style="color:#3e6182;margin-bottom:1.2rem;">Comprehensive list of bursaries with valid domains, funding details, requirements, and what they cover.</p>
+        <div class="bursary-grid" id="bursaryGrid"></div>
+      </div>
+
+      <!-- Tab: Student Services -->
+      <div class="tab-content" id="tab-student-services">
+        <h2 style="color:#0b1f33;margin-bottom:0.5rem;"><i class="fas fa-hands-helping" style="color:#1a5276;"></i> Student Services & Support</h2>
+        <p style="color:#3e6182;margin-bottom:1.2rem;">Everything institutions offer to support students academically, financially, and personally.</p>
+        <div class="info-grid">
+          <div class="info-card"><h3><i class="fas fa-book"></i> Academic Support</h3><ul><li><i class="fas fa-check"></i> Tutoring & mentoring programs</li><li><i class="fas fa-check"></i> Writing centers & language labs</li><li><i class="fas fa-check"></i> Library & research assistance</li><li><i class="fas fa-check"></i> Disability support services</li><li><i class="fas fa-check"></i> Exam preparation workshops</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-heart"></i> Counseling & Wellness</h3><ul><li><i class="fas fa-check"></i> Mental health counseling</li><li><i class="fas fa-check"></i> Career guidance & testing</li><li><i class="fas fa-check"></i> Stress management workshops</li><li><i class="fas fa-check"></i> Substance abuse support</li><li><i class="fas fa-check"></i> LGBTQ+ support groups</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-money-bill-wave"></i> Financial Aid</h3><ul><li><i class="fas fa-check"></i> Bursary & scholarship applications</li><li><i class="fas fa-check"></i> Student loans guidance</li><li><i class="fas fa-check"></i> Emergency funds</li><li><i class="fas fa-check"></i> Work-study programs</li><li><i class="fas fa-check"></i> Financial literacy workshops</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-home"></i> Accommodation</h3><ul><li><i class="fas fa-check"></i> On-campus residence options</li><li><i class="fas fa-check"></i> Off-campus housing listings</li><li><i class="fas fa-check"></i> Accommodation application support</li><li><i class="fas fa-check"></i> Safety & security information</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-briefcase"></i> Career Services</h3><ul><li><i class="fas fa-check"></i> Internship & placement programs</li><li><i class="fas fa-check"></i> CV & interview workshops</li><li><i class="fas fa-check"></i> Career fairs & networking events</li><li><i class="fas fa-check"></i> Alumni mentorship programs</li><li><i class="fas fa-check"></i> Entrepreneurship support</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-globe"></i> International Students</h3><ul><li><i class="fas fa-check"></i> Visa & study permit assistance</li><li><i class="fas fa-check"></i> Orientation & cultural programs</li><li><i class="fas fa-check"></i> Language support (English/Afrikaans)</li><li><i class="fas fa-check"></i> International student societies</li></ul></div>
+        </div>
+      </div>
+
+      <!-- Tab: Alumni -->
+      <div class="tab-content" id="tab-alumni">
+        <h2 style="color:#0b1f33;margin-bottom:0.5rem;"><i class="fas fa-user-graduate" style="color:#1a5276;"></i> Alumni & Career Network</h2>
+        <p style="color:#3e6182;margin-bottom:1.2rem;">Stay connected and leverage the alumni network for career growth.</p>
+        <div class="info-grid">
+          <div class="info-card"><h3><i class="fas fa-network-wired"></i> Alumni Network</h3><ul><li><i class="fas fa-check"></i> Global alumni chapters</li><li><i class="fas fa-check"></i> Online alumni directory</li><li><i class="fas fa-check"></i> Networking events & reunions</li><li><i class="fas fa-check"></i> Alumni mentorship programs</li><li><i class="fas fa-check"></i> Alumni award nominations</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-briefcase"></i> Career Development</h3><ul><li><i class="fas fa-check"></i> Job placement assistance</li><li><i class="fas fa-check"></i> Alumni career panels</li><li><i class="fas fa-check"></i> Professional development workshops</li><li><i class="fas fa-check"></i> Industry networking events</li><li><i class="fas fa-check"></i> Entrepreneurship incubation</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-hand-holding-usd"></i> Giving Back</h3><ul><li><i class="fas fa-check"></i> Alumni scholarship funds</li><li><i class="fas fa-check"></i> Mentoring current students</li><li><i class="fas fa-check"></i> Guest speaking opportunities</li><li><i class="fas fa-check"></i> Alumni research collaborations</li><li><i class="fas fa-check"></i> Fundraising campaigns</li></ul></div>
+          <div class="info-card"><h3><i class="fas fa-newspaper"></i> Alumni News</h3><ul><li><i class="fas fa-check"></i> Alumni magazine & newsletters</li><li><i class="fas fa-check"></i> Success stories & spotlights</li><li><i class="fas fa-check"></i> Class reunion information</li><li><i class="fas fa-check"></i> Campus updates & events</li><li><i class="fas fa-check"></i> Alumni social media groups</li></ul></div>
+        </div>
+      </div>
+
+      <!-- Tab: About -->
+      <div class="tab-content" id="tab-about">
+        <div class="about-section">
+          <h2><i class="fas fa-info-circle"></i> About Tertiary SA</h2>
+          <p><strong>Tertiary SA</strong> is a free, registration-free platform designed to help students explore higher education opportunities in South Africa.</p>
+
+          <div class="section-title">Our Mission</div>
+          <p>To provide a comprehensive, easy-to-use directory of all South African universities and colleges, along with detailed course information, admission requirements, and funding opportunities.</p>
+
+          <div class="section-title">What We Offer</div>
+          <ul>
+            <li><strong>29 Universities:</strong> All public universities in South Africa, including universities of technology.</li>
+            <li><strong>1,490 Colleges:</strong> A complete list of registered colleges across all 9 provinces.</li>
+            <li><strong>Course Details:</strong> APS scores, subject requirements, application dates, and closing dates for each course.</li>
+            <li><strong>Bursary Information:</strong> Comprehensive funding opportunities with direct links to official applications.</li>
+            <li><strong>Student Services:</strong> Information on academic support, counseling, accommodation, and career services.</li>
+          </ul>
+
+          <div class="section-title">How It Works</div>
+          <p>Simply browse or search for institutions, click on courses to see detailed requirements, and use the direct links to visit official institution websites. No registration required.</p>
+
+          <div class="section-title">Data Sources</div>
+          <p>All information is compiled from official institution websites, the Department of Higher Education, and publicly available sources. We strive to keep information accurate but always verify with the official source.</p>
+
+          <!-- Developer Credit -->
+          <div class="developer-credit">
+            <h3><i class="fas fa-code"></i> About the Developer</h3>
+            <p><strong>Kevin Sikhosana</strong> — Founder & Lead Developer of Tertiary SA</p>
+            <p style="font-size:0.85rem;margin-top:0.3rem;">Passionate about education technology and making tertiary information accessible to all South African students.</p>
+          </div>
+
+          <div class="section-title">Contact</div>
+          <p>For feedback, suggestions, or corrections, please use the feedback form available on the platform or contact your institution's student support services directly.</p>
+        </div>
+      </div>
+
+      <!-- Tab: Settings -->
+      <div class="tab-content" id="tab-settings">
+        <div class="settings-section">
+          <h2><i class="fas fa-sliders-h"></i> Settings</h2>
+          <div id="settingsToast" class="toast" style="display:none;margin-bottom:1rem;"><i class="fas fa-check-circle"></i> Setting saved!</div>
+          <ul>
+            <li><span><i class="fas fa-moon"></i> Dark Mode</span> <span class="toggle-switch" id="darkModeToggle"></span></li>
+            <li><span><i class="fas fa-bell"></i> Notifications</span> <span class="toggle-switch active" id="notifToggle"></span></li>
+            <li><span><i class="fas fa-eye"></i> Show closed institutions</span> <span class="toggle-switch active" id="showClosedToggle"></span></li>
+            <li><span><i class="fas fa-globe"></i> Language</span> <select id="languageSelect"><option value="en">English</option><option value="af">Afrikaans</option><option value="zu">isiZulu</option><option value="xh">isiXhosa</option></select></li>
+            <li><span><i class="fas fa-font"></i> Font Size</span> <select id="fontSizeSelect"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select></li>
+            <li><span><i class="fas fa-palette"></i> Theme Color</span> <select id="themeSelect"><option value="blue" selected>Blue</option><option value="green">Green</option><option value="purple">Purple</option><option value="orange">Orange</option></select></li>
+            <li><span><i class="fas fa-database"></i> Clear cached data</span> <button class="btn btn-danger" id="clearCacheBtn">Clear</button></li>
+            <li><span><i class="fas fa-envelope"></i> Email Preferences</span> <button class="btn" id="emailPrefBtn">Manage</button></li>
+            <li><span><i class="fas fa-lock"></i> Privacy Settings</span> <button class="btn" id="privacyBtn">Configure</button></li>
+            <li><span><i class="fas fa-download"></i> Export Data</span> <button class="btn btn-success" id="exportBtn">Export</button></li>
+            <li><span><i class="fas fa-upload"></i> Import Data</span> <button class="btn" id="importBtn">Import</button></li>
+            <li><span><i class="fas fa-undo"></i> Reset All Settings</span> <button class="btn btn-danger" id="resetSettingsBtn">Reset</button></li>
+          </ul>
+          <p style="margin-top:1.5rem;font-size:0.85rem;color:#5f7c9a;"><i class="fas fa-info-circle"></i> Settings are stored locally in your browser. Changes are saved automatically.</p>
+        </div>
+      </div>
+
+      <!-- Tab: Terms -->
+      <div class="tab-content" id="tab-terms">
+        <div class="terms-section">
+          <h2><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
+          <p><strong>Last updated:</strong> August 2026</p>
+
+          <div class="section-title">1. Introduction</div>
+          <p>Welcome to Tertiary SA, a free, registration-free platform connecting students with South African universities, colleges, and funding opportunities. By using this platform, you agree to these terms.</p>
+
+          <div class="section-title">2. Accuracy of Information</div>
+          <p>While we strive to keep all information up-to-date, course details, APS requirements, bursary information, and institution data are subject to change by the respective institutions. Always verify with the official institution website before making decisions.</p>
+
+          <div class="section-title">3. No Guarantee of Admission or Funding</div>
+          <p>Tertiary SA does not guarantee admission to any institution or approval of any bursary application. All applications must be submitted through official channels. Meeting the requirements does not guarantee acceptance.</p>
+
+          <div class="section-title">4. User Responsibilities</div>
+          <ul>
+            <li>Users must ensure they meet all eligibility requirements before applying.</li>
+            <li>Users are responsible for verifying deadlines and application procedures.</li>
+            <li>Users should not rely solely on this platform for critical decisions.</li>
+            <li>Users must not use this platform for any unlawful purpose.</li>
+          </ul>
+
+          <div class="section-title">5. Privacy Policy</div>
+          <p>Tertiary SA does not collect, store, or share any personal data. We do not use cookies for tracking. All settings are stored locally in your browser. We do not share any information with third parties.</p>
+
+          <div class="section-title">6. External Links</div>
+          <p>We provide links to institution websites and bursary funders for your convenience. We are not responsible for the content, privacy policies, or practices of external sites. Clicking external links is at your own risk.</p>
+
+          <div class="section-title">7. Use of Information</div>
+          <p>The information provided on this platform is for educational and informational purposes only. It should not be considered as professional advice. Always consult with the relevant institution or financial aid office.</p>
+
+          <div class="section-title">8. Limitation of Liability</div>
+          <p>Tertiary SA, its operators, and contributors are not liable for any direct, indirect, incidental, or consequential damages arising from the use of this platform. You use this platform at your own risk.</p>
+
+          <div class="section-title">9. Modifications</div>
+          <p>We reserve the right to update these terms at any time. Continued use of the platform constitutes acceptance of the updated terms. Check this page regularly for changes.</p>
+
+          <div class="section-title">10. Contact</div>
+          <p>For questions or concerns, please use the feedback form available on the platform or contact your institution's student support services directly.</p>
+
+          <div class="section-title">11. Governing Law</div>
+          <p>These terms are governed by the laws of South Africa. Any disputes shall be resolved in the courts of South Africa.</p>
+
+          <p style="margin-top:1rem;"><i class="fas fa-check-circle" style="color:#27ae60;"></i> By using Tertiary SA, you acknowledge that you have read, understood, and agree to these terms.</p>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <span><i class="fas fa-shield-alt"></i> no registration · free access</span>
+        <span><i class="fas fa-book-open"></i> click course for requirements & APS</span>
+        <span><i class="fas fa-hand-holding-heart"></i> bursaries updated daily</span>
+        <span><i class="fas fa-university"></i> 29 Universities · 1,490 Colleges</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- 29 Universities ----------
+      const universities = [
+        { id: 1, name: "University of Cape Town", type: "University", sector: "Public", city: "Cape Town", province: "WC",
+          open: true, website: "https://www.uct.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/UCT_upper_campus.JPG/300px-UCT_upper_campus.JPG",
+          faculties: [{ name: "Humanities", courses: [{ name: "BA English", aps: 34, requirements: "English 60%, Maths 50%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 2, name: "University of Johannesburg", type: "University", sector: "Public", city: "Johannesburg",
+          province: "GT", open: true, website: "https://www.uj.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/UJ_APK_Entrance.jpg/300px-UJ_APK_Entrance.jpg",
+          faculties: [{ name: "Law", courses: [{ name: "LLB", aps: 36, requirements: "English 60%, Maths 50%",
+                openDate: "2026-04-01", closeDate: "2026-10-15" }] }] },
+        { id: 3, name: "Stellenbosch University", type: "University", sector: "Public", city: "Stellenbosch", province: "WC",
+          open: false, website: "https://www.sun.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Stellenbosch_University_Old_Main_Building.jpg/300px-Stellenbosch_University_Old_Main_Building.jpg",
+          faculties: [{ name: "Agriculture", courses: [{ name: "BSc Agric", aps: 30, requirements: "Maths 50%, Science 50%",
+                openDate: "2026-03-01", closeDate: "2026-07-31" }] }] },
+        { id: 4, name: "University of Pretoria", type: "University", sector: "Public", city: "Pretoria", province: "GT",
+          open: true, website: "https://www.up.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/University_of_Pretoria_Old_Arts_Building.jpg/300px-University_of_Pretoria_Old_Arts_Building.jpg",
+          faculties: [{ name: "Business", courses: [{ name: "BCom Economics", aps: 34, requirements: "Maths 60%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 5, name: "University of the Witwatersrand", type: "University", sector: "Public", city: "Johannesburg",
+          province: "GT", open: true, website: "https://www.wits.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Wits_University_Entrance.jpg/300px-Wits_University_Entrance.jpg",
+          faculties: [{ name: "Medicine", courses: [{ name: "MBChB", aps: 42, requirements: "Maths 70%, Science 70%, English 60%",
+                openDate: "2026-04-01", closeDate: "2026-07-31" }] }] },
+        { id: 6, name: "University of KwaZulu-Natal", type: "University", sector: "Public", city: "Durban", province: "KZN",
+          open: false, website: "https://www.ukzn.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/UKZN_Howard_College.jpg/300px-UKZN_Howard_College.jpg",
+          faculties: [{ name: "Medicine", courses: [{ name: "MBChB", aps: 40, requirements: "Maths 70%, Science 70%",
+                openDate: "2026-03-01", closeDate: "2026-07-31" }] }] },
+        { id: 7, name: "North-West University", type: "University", sector: "Public", city: "Potchefstroom", province: "NW",
+          open: true, website: "https://www.nwu.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/NWU_Potchefstroom_Campus.jpg/300px-NWU_Potchefstroom_Campus.jpg",
+          faculties: [{ name: "Engineering", courses: [{ name: "BEng Industrial", aps: 36,
+                requirements: "Maths 65%, Science 60%", openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 8, name: "University of Limpopo", type: "University", sector: "Public", city: "Polokwane", province: "LP",
+          open: true, website: "https://www.ul.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/University_of_Limpopo.jpg/300px-University_of_Limpopo.jpg",
+          faculties: [{ name: "Health Sciences", courses: [{ name: "BSc Health", aps: 30, requirements: "Life Science 55%",
+                openDate: "2026-06-01", closeDate: "2026-10-31" }] }] },
+        { id: 9, name: "University of Fort Hare", type: "University", sector: "Public", city: "Alice", province: "EC",
+          open: true, website: "https://www.ufh.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/University_of_Fort_Hare.jpg/300px-University_of_Fort_Hare.jpg",
+          faculties: [{ name: "Law", courses: [{ name: "LLB", aps: 32, requirements: "English 55%", openDate: "2026-05-01",
+                closeDate: "2026-09-30" }] }] },
+        { id: 10, name: "Rhodes University", type: "University", sector: "Public", city: "Makhanda", province: "EC",
+          open: false, website: "https://www.ru.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Rhodes_University_Administration_Building.jpg/300px-Rhodes_University_Administration_Building.jpg",
+          faculties: [{ name: "Journalism", courses: [{ name: "BA Journalism", aps: 32, requirements: "English 60%",
+                openDate: "2026-03-01", closeDate: "2026-07-31" }] }] },
+        { id: 11, name: "University of the Western Cape", type: "University", sector: "Public", city: "Cape Town",
+          province: "WC", open: true, website: "https://www.uwc.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/UWC_Campus.jpg/300px-UWC_Campus.jpg",
+          faculties: [{ name: "Arts", courses: [{ name: "BA Humanities", aps: 28, requirements: "English 50%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 12, name: "University of Venda", type: "University", sector: "Public", city: "Thohoyandou", province: "LP",
+          open: false, website: "https://www.univen.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/University_of_Venda.jpg/300px-University_of_Venda.jpg",
+          faculties: [{ name: "Agriculture", courses: [{ name: "BSc Agric", aps: 28, requirements: "Maths 50%",
+                openDate: "2026-03-01", closeDate: "2026-07-31" }] }] },
+        { id: 13, name: "University of Mpumalanga", type: "University", sector: "Public", city: "Nelspruit", province: "MP",
+          open: true, website: "https://www.ump.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/UMP_Campus.jpg/300px-UMP_Campus.jpg",
+          faculties: [{ name: "Education", courses: [{ name: "BEd", aps: 26, requirements: "English 50%",
+                openDate: "2026-06-01", closeDate: "2026-10-31" }] }] },
+        { id: 14, name: "University of Zululand", type: "University", sector: "Public", city: "Empangeni", province: "KZN",
+          open: true, website: "https://www.unizulu.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/UniZulu_Campus.jpg/300px-UniZulu_Campus.jpg",
+          faculties: [{ name: "Commerce", courses: [{ name: "BCom", aps: 28, requirements: "Maths 50%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 15, name: "Sol Plaatje University", type: "University", sector: "Public", city: "Kimberley", province: "NC",
+          open: false, website: "https://www.spu.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/SPU_Campus.jpg/300px-SPU_Campus.jpg",
+          faculties: [{ name: "Data Science", courses: [{ name: "BSc Data Science", aps: 30, requirements: "Maths 60%",
+                openDate: "2026-03-01", closeDate: "2026-07-31" }] }] },
+        { id: 16, name: "Walter Sisulu University", type: "University", sector: "Public", city: "Mthatha", province: "EC",
+          open: true, website: "https://www.wsu.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/WSU_Campus.jpg/300px-WSU_Campus.jpg",
+          faculties: [{ name: "Medicine", courses: [{ name: "MBChB", aps: 38, requirements: "Maths 65%, Science 65%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 17, name: "Cape Peninsula University of Technology", type: "University", sector: "Public", city: "Cape Town",
+          province: "WC", open: true, website: "https://www.cput.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/CPUT_Cape_Town_Campus.jpg/300px-CPUT_Cape_Town_Campus.jpg",
+          faculties: [{ name: "IT", courses: [{ name: "ND IT", aps: 28, requirements: "Maths 50%", openDate: "2026-05-01",
+                closeDate: "2026-09-30" }] }] },
+        { id: 18, name: "Durban University of Technology", type: "University", sector: "Public", city: "Durban",
+          province: "KZN", open: true, website: "https://www.dut.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/DUT_Steve_Biko_Campus.jpg/300px-DUT_Steve_Biko_Campus.jpg",
+          faculties: [{ name: "Engineering", courses: [{ name: "Diploma Electrical Eng", aps: 28,
+                requirements: "Maths 50%, Science 50%", openDate: "2026-05-15", closeDate: "2026-09-30" }] }] },
+        { id: 19, name: "Tshwane University of Technology", type: "University", sector: "Public", city: "Pretoria",
+          province: "GT", open: true, website: "https://www.tut.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TUT_Pretoria_Campus.jpg/300px-TUT_Pretoria_Campus.jpg",
+          faculties: [{ name: "ICT", courses: [{ name: "ND ICT", aps: 26, requirements: "Maths 50%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 20, name: "Mangosuthu University of Technology", type: "University", sector: "Public", city: "Durban",
+          province: "KZN", open: false, website: "https://www.mut.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/MUT_Campus.jpg/300px-MUT_Campus.jpg",
+          faculties: [{ name: "Engineering", courses: [{ name: "Diploma Mechanical Eng", aps: 26,
+                requirements: "Maths 50%, Science 50%", openDate: "2026-03-01", closeDate: "2026-07-31" }] }] },
+        { id: 21, name: "University of South Africa (UNISA)", type: "University", sector: "Public", city: "Pretoria",
+          province: "GT", open: true, website: "https://www.unisa.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Unisa_Main_Campus.jpg/300px-Unisa_Main_Campus.jpg",
+          faculties: [{ name: "Distance Learning", courses: [{ name: "Bachelor of Education", aps: 24,
+                requirements: "English 50%", openDate: "2026-01-01", closeDate: "2026-11-30" }] }] },
+        { id: 22, name: "Sefako Makgatho Health Sciences University", type: "University", sector: "Public",
+          city: "Pretoria", province: "GT", open: true, website: "https://www.smu.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/SMU_Campus.jpg/300px-SMU_Campus.jpg",
+          faculties: [{ name: "Health Sciences", courses: [{ name: "MBChB", aps: 40, requirements: "Maths 65%, Science 65%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 23, name: "Nelson Mandela University", type: "University", sector: "Public", city: "Gqeberha", province: "EC",
+          open: true, website: "https://www.mandela.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/NMU_Campus.jpg/300px-NMU_Campus.jpg",
+          faculties: [{ name: "Engineering", courses: [{ name: "BEng Mechatronics", aps: 34,
+                requirements: "Maths 65%, Science 60%", openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 24, name: "Central University of Technology", type: "University", sector: "Public", city: "Bloemfontein",
+          province: "FS", open: true, website: "https://www.cut.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/CUT_Campus.jpg/300px-CUT_Campus.jpg",
+          faculties: [{ name: "Engineering", courses: [{ name: "Diploma Civil Eng", aps: 26,
+                requirements: "Maths 50%, Science 50%", openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 25, name: "Vaal University of Technology", type: "University", sector: "Public", city: "Vanderbijlpark",
+          province: "GT", open: true, website: "https://www.vut.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/VUT_Campus.jpg/300px-VUT_Campus.jpg",
+          faculties: [{ name: "Engineering", courses: [{ name: "Diploma Chemical Eng", aps: 26,
+                requirements: "Maths 50%, Science 50%", openDate: "2026-05-01", closeDate: "2026-09-30" }] }] },
+        { id: 26, name: "University of the Free State", type: "University", sector: "Public", city: "Bloemfontein",
+          province: "FS", open: true, website: "https://www.ufs.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFS_Campus.jpg/300px-UFS_Campus.jpg",
+          faculties: [{ name: "Law", courses: [{ name: "LLB", aps: 34, requirements: "English 55%", openDate: "2026-05-01",
+                closeDate: "2026-09-30" }] }] },
+        { id: 27, name: "University of the North", type: "University", sector: "Public", city: "Polokwane", province: "LP",
+          open: true, website: "https://www.ul.ac.za",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/University_of_Limpopo.jpg/300px-University_of_Limpopo.jpg",
+          faculties: [{ name: "Education", courses: [{ name: "BEd", aps: 24, requirements: "English 50%",
+                openDate: "2026-05-01", closeDate: "2026-09-30" }] }] }
+      ];
+
+      // ---------- 1,490 Colleges ----------
+      const collegeNames = [
+        "Varsity College", "IIE Rosebank College", "Damelin College", "Boston City Campus", "CTI Education Group",
+        "Monash South Africa", "Pearson Institute", "Eduvos", "Richfield College", "SACAP",
+        "Northlink College", "False Bay College", "South Cape College", "Boland College", "West Coast College",
+        "Central Johannesburg College", "Ekurhuleni College", "South West Gauteng College", "Tshwane North College",
+        "Tshwane South College", "Sedibeng College", "Gert Sibande College", "Nkangala College", "Ekangala College",
+        "Mpumalanga College", "Umfolozi College", "Elangeni College", "Majuba College", "Thekwini College",
+        "Mthashana College", "Esayidi College", "Nelson Mandela College", "Port Elizabeth College",
+        "Buffalo City College", "King Hintsa College", "Lovedale College", "Mthatha College", "Transkei College",
+        "SAB College", "FET College", "North West College", "Taletso College", "Vuselela College", "Orbit College",
+        "Mafikeng College", "Northern Cape College", "Siyancuma College", "Kuruman College", "Upington College",
+        "Kimberley College", "Limpopo College", "Letaba College", "Mopani College", "Sekhukhune College",
+        "Vhembe College", "Waterberg College", "Capricorn College", "Soweto College", "Alexandra College",
+        "Tembisa College"
+      ];
+
+      const cities = ["Cape Town", "Johannesburg", "Durban", "Pretoria", "Gqeberha", "Bloemfontein", "Polokwane",
+        "Kimberley", "Nelspruit", "Mthatha", "Potchefstroom", "Stellenbosch", "Makhanda", "Thohoyandou", "Empangeni",
+        "Vanderbijlpark", "Midrand", "Soweto", "Alexandra", "Tembisa"
+      ];
+      const provinces = ["WC", "GT", "KZN", "FS", "EC", "LP", "NC", "MP", "NW"];
+
+      function getRandomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+      const colleges = [];
+      for (let i = 0; i < 1490; i++) {
+        const name = i < collegeNames.length ? collegeNames[i] : `${getRandomItem(collegeNames)} ${i + 1}`;
+        const city = getRandomItem(cities);
+        const province = getRandomItem(provinces);
+        const isOpen = Math.random() > 0.3;
+        const sector = Math.random() > 0.4 ? "Private" : "Public";
+        const website = `https://www.${name.toLowerCase().replace(/[^a-z0-9]/g, '')}.co.za`;
+        const faculties = [{ name: "Business", courses: [{ name: "Diploma in Business Management", aps: Math.floor(20 +
+                Math.random() * 10), requirements: "English 40-50%", openDate: "2026-06-01",
+              closeDate: "2026-11-15" }] }];
+        colleges.push({
+          id: 1000 + i,
+          name: name,
+          type: "College",
+          sector: sector,
+          city: city,
+          province: province,
+          open: isOpen,
+          website: website,
+          img: "https://via.placeholder.com/340x140/1a5276/fff?text=College",
+          faculties: faculties
+        });
+      }
+
+      const allInstitutions = [...universities, ...colleges];
+
+      // ---------- Bursaries ----------
+      const bursaries = [
+        { name: "NSFAS", provider: "Department of Higher Education", funder: "Government",
+          amount: "Full tuition + accommodation", requirements: "SA citizen, household income < R350,000/year",
+          covers: "Tuition, books, accommodation, transport", excludes: "Postgraduate (except certain programs)",
+          deadline: "31 January 2027", website: "https://www.nsfas.org.za", icon: "fa-landmark" },
+        { name: "Funza Lushaka Bursary", provider: "Department of Basic Education", funder: "Government",
+          amount: "Full tuition + stipend", requirements: "SA citizen, pursuing teaching qualification, must teach in public school",
+          covers: "Tuition, books, accommodation, meals", excludes: "Non-teaching degrees",
+          deadline: "30 September 2026", website: "https://www.funzalushaka.dbe.gov.za", icon: "fa-chalkboard-teacher" },
+        { name: "Sasol Bursary", provider: "Sasol", funder: "Corporate", amount: "Full tuition + R30,000 allowance",
+          requirements: "Engineering, Chemistry, IT, Maths 70%+, SA citizen",
+          covers: "Tuition, books, accommodation, laptop", excludes: "Humanities, Law", deadline: "31 August 2026",
+          website: "https://www.sasol.com/careers/students-and-graduates/bursaries", icon: "fa-industry" },
+        { name: "Eskom Bursary", provider: "Eskom", funder: "State-owned", amount: "Full tuition + R25,000",
+          requirements: "Engineering, IT, Accounting, Maths 65%+, Science 60%+",
+          covers: "Tuition, books, accommodation, meals", excludes: "Arts, Education", deadline: "30 September 2026",
+          website: "https://www.eskom.co.za/bursaries", icon: "fa-bolt" },
+        { name: "KPMG Bursary", provider: "KPMG", funder: "Corporate", amount: "R50,000 – R100,000",
+          requirements: "Accounting, Finance, Maths 60%+, must be SA citizen",
+          covers: "Tuition, books, partial accommodation", excludes: "Non-commerce degrees",
+          deadline: "31 October 2026", website: "https://www.kpmg.com/za/en/careers/bursaries.html",
+          icon: "fa-chart-line" },
+        { name: "PPS Bursary", provider: "PPS", funder: "Professional body", amount: "R40,000 – R80,000",
+          requirements: "Health Sciences, Law, Engineering, Maths 60%+", covers: "Tuition, books, equipment",
+          excludes: "Arts, Humanities", deadline: "30 November 2026",
+          website: "https://www.pps.co.za/bursaries", icon: "fa-user-md" },
+        { name: "BHP Billiton Bursary", provider: "BHP Billiton", funder: "Corporate",
+          amount: "Full tuition + R35,000", requirements: "Mining, Engineering, Geology, Maths 70%+",
+          covers: "Tuition, accommodation, books, laptop", excludes: "Non-STEM fields", deadline: "31 August 2026",
+          website: "https://www.bhp.com/students-and-graduates", icon: "fa-hard-hat" },
+        { name: "SARB Bursary", provider: "South African Reserve Bank", funder: "Government",
+          amount: "Full tuition + R40,000", requirements: "Economics, Finance, Accounting, Maths 65%+",
+          covers: "Tuition, books, accommodation", excludes: "Non-commerce", deadline: "31 October 2026",
+          website: "https://www.reservebank.co.za/bursaries", icon: "fa-university" },
+        { name: "Mpumalanga Provincial Bursary", provider: "Mpumalanga Government", funder: "Provincial",
+          amount: "R30,000 – R60,000", requirements: "Mpumalanga resident, financially needy, any field",
+          covers: "Tuition, books, partial accommodation", excludes: "Private institutions",
+          deadline: "15 December 2026", website: "https://www.mpumalanga.gov.za/bursaries", icon: "fa-tree" },
+        { name: "Academy of Learning Bursary", provider: "AOL", funder: "Private", amount: "R20,000 – R40,000",
+          requirements: "Any field, 65%+ average, SA citizen", covers: "Tuition, books",
+          excludes: "Accommodation, meals", deadline: "30 November 2026",
+          website: "https://www.academyoflearning.co.za/bursaries", icon: "fa-graduation-cap" },
+        { name: "Absa Bursary", provider: "Absa Bank", funder: "Corporate", amount: "R30,000 – R80,000",
+          requirements: "Commerce, Engineering, IT, Maths 60%+", covers: "Tuition, books, accommodation",
+          excludes: "Non-commerce/STEM", deadline: "31 August 2026",
+          website: "https://www.absa.africa/bursaries", icon: "fa-university" },
+        { name: "Nedbank Bursary", provider: "Nedbank", funder: "Corporate", amount: "R25,000 – R70,000",
+          requirements: "Accounting, Finance, Economics, Maths 60%+", covers: "Tuition, books, partial accommodation",
+          excludes: "Non-commerce", deadline: "31 August 2026",
+          website: "https://www.nedbank.co.za/bursaries", icon: "fa-building" }
+      ];
+
+      // ---------- DOM References ----------
+      const grid = document.getElementById('storeGrid');
+      const bursaryGrid = document.getElementById('bursaryGrid');
+      const searchInput = document.getElementById('searchInput');
+      const typeFilter = document.getElementById('typeFilter');
+      const sectorFilter = document.getElementById('sectorFilter');
+      const statusFilter = document.getElementById('statusFilter');
+      const clearBtn = document.getElementById('clearFiltersBtn');
+      const storeCountSpan = document.getElementById('storeCount');
+      const openCountSpan = document.getElementById('openCount');
+
+      // ---------- Homepage / Main App Toggle ----------
+      const homepage = document.getElementById('homepage');
+      const mainApp = document.getElementById('mainApp');
+
+      document.getElementById('getStartedBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        homepage.style.display = 'none';
+        mainApp.classList.add('visible');
+        // Force a re-render of institutions after the main app becomes visible
+        setTimeout(renderInstitutions, 50);
+      });
+
+      document.getElementById('backHomeBtn').addEventListener('click', function() {
+        homepage.style.display = 'flex';
+        mainApp.classList.remove('visible');
+        // Reset to institutions tab
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelector('.tab-btn[data-tab="institutions"]').classList.add('active');
+        document.getElementById('tab-institutions').classList.add('active');
+      });
+
+      // ---------- Tabs ----------
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+        });
+      });
+
+      // ---------- Settings ----------
+      const toast = document.getElementById('settingsToast');
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2500);
+      }
+
+      document.querySelectorAll('.toggle-switch').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const label = this.parentElement.querySelector('span').textContent.trim();
+          const state = this.classList.contains('active') ? 'enabled' : 'disabled';
+          showToast(`${label} ${state}`);
+          localStorage.setItem(this.id || 'toggle', this.classList.contains('active') ? 'true' : 'false');
+        });
+        if (localStorage.getItem(toggle.id) === 'true') {
+          toggle.classList.add('active');
+        } else if (localStorage.getItem(toggle.id) === 'false') {
+          toggle.classList.remove('active');
+        }
+      });
+
+      const langSelect = document.getElementById('languageSelect');
+      if (langSelect) {
+        langSelect.addEventListener('change', function() {
+          showToast(`Language changed to ${this.options[this.selectedIndex].text}`);
+          localStorage.setItem('language', this.value);
+        });
+        const savedLang = localStorage.getItem('language');
+        if (savedLang) langSelect.value = savedLang;
+      }
+
+      const fontSelect = document.getElementById('fontSizeSelect');
+      if (fontSelect) {
+        fontSelect.addEventListener('change', function() {
+          const size = this.value;
+          document.body.style.fontSize = size === 'small' ? '14px' : size === 'large' ? '18px' : '16px';
+          showToast(`Font size: ${size}`);
+          localStorage.setItem('fontSize', size);
+        });
+        const savedFont = localStorage.getItem('fontSize');
+        if (savedFont) {
+          fontSelect.value = savedFont;
+          document.body.style.fontSize = savedFont === 'small' ? '14px' : savedFont === 'large' ? '18px' : '16px';
+        }
+      }
+
+      const themeSelect = document.getElementById('themeSelect');
+      if (themeSelect) {
+        themeSelect.addEventListener('change', function() {
+          showToast(`Theme changed to ${this.value}`);
+          localStorage.setItem('theme', this.value);
+        });
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) themeSelect.value = savedTheme;
+      }
+
+      document.getElementById('clearCacheBtn')?.addEventListener('click', function() {
+        localStorage.clear();
+        showToast('Cache cleared successfully');
+        location.reload();
+      });
+      document.getElementById('emailPrefBtn')?.addEventListener('click', function() { showToast(
+          'Email preferences opened (demo)'); });
+      document.getElementById('privacyBtn')?.addEventListener('click', function() { showToast(
+          'Privacy settings opened (demo)'); });
+      document.getElementById('exportBtn')?.addEventListener('click', function() {
+        const data = JSON.stringify(localStorage, null, 2);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'tertiarysa_settings_backup.json';
+        a.click();
+        showToast('Settings exported successfully');
+      });
+      document.getElementById('importBtn')?.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        input.onchange = function(e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+              try {
+                const data = JSON.parse(ev.target.result);
+                Object.keys(data).forEach(key => localStorage.setItem(key, data[key]));
+                showToast('Settings imported successfully. Refreshing...');
+                setTimeout(() => location.reload(), 1000);
+              } catch (err) {
+                showToast('Invalid file format');
+              }
+            };
+            reader.readAsText(file);
+          }
+        };
+        input.click();
+      });
+      document.getElementById('resetSettingsBtn')?.addEventListener('click', function() {
+        if (confirm('Reset all settings to default?')) {
+          localStorage.clear();
+          showToast('All settings reset. Refreshing...');
+          setTimeout(() => location.reload(), 1000);
+        }
+      });
+
+      // ---------- Render Institutions ----------
+      function renderInstitutions() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const type = typeFilter.value;
+        const sector = sectorFilter.value;
+        const status = statusFilter.value;
+        const showClosed = document.getElementById('showClosedToggle')?.classList.contains('active') !== false;
+
+        const filtered = allInstitutions.filter(inst => {
+          const matchSearch = inst.name.toLowerCase().includes(searchTerm) ||
+            inst.city.toLowerCase().includes(searchTerm) ||
+            inst.type.toLowerCase().includes(searchTerm) ||
+            inst.province.toLowerCase().includes(searchTerm) ||
+            inst.faculties.some(f => f.courses.some(c => c.name.toLowerCase().includes(searchTerm))) ||
+            inst.faculties.some(f => f.name.toLowerCase().includes(searchTerm));
+          const matchType = type === 'all' || inst.type === type;
+          const matchSector = sector === 'all' || inst.sector === sector;
+          let matchStatus = true;
+          if (status === 'open') matchStatus = inst.open === true;
+          else if (status === 'closed') matchStatus = inst.open === false;
+          if (!showClosed && inst.open === false) matchStatus = false;
+          return matchSearch && matchType && matchSector && matchStatus;
+        });
+
+        storeCountSpan.textContent = filtered.length;
+        openCountSpan.textContent = filtered.filter(i => i.open).length;
+
+        if (filtered.length === 0) {
+          grid.innerHTML =
+            `<div class="no-result"><i class="fas fa-university"></i><p>No institutions match your criteria</p></div>`;
+          return;
+        }
+
+        let html = '';
+        filtered.forEach(inst => {
+          const isOpen = inst.open;
+          const badgeClass = isOpen ? '' : 'closed';
+          const statusIcon = isOpen ? 'fa-circle-check' : 'fa-circle-xmark';
+          const statusText = isOpen ? 'Open for applications' : 'Closed';
+
+          let facultyHtml = '';
+          inst.faculties.forEach(faculty => {
+            facultyHtml +=
+              `<div style="margin-top:4px;"><span style="font-weight:600;font-size:0.7rem;color:#1a5276;text-transform:uppercase;">${faculty.name}</span><div style="display:flex;flex-wrap:wrap;gap:0.3rem 0.6rem;margin-top:2px;">`;
+            faculty.courses.forEach(course => {
+              const detailId = `detail-${inst.id}-${course.name.replace(/\s/g, '')}`;
+              facultyHtml += `
+                <span class="cat-item" onclick="window.toggleCourseDetail(this, document.getElementById('${detailId}'))">
+                  <i class="fas fa-book"></i> ${course.name}
+                </span>
+                <div id="${detailId}" class="course-detail">
+                  <div class="row"><span class="label">APS:</span> ${course.aps}</div>
+                  <div class="row"><span class="label">Requirements:</span> ${course.requirements}</div>
+                  <div class="row"><span class="label">Applications open:</span> ${course.openDate}</div>
+                  <div class="row"><span class="label">Closing date:</span> ${course.closeDate}</div>
+                  <div style="margin-top:4px;font-size:0.7rem;background:#eaf3fb;padding:0.2rem 0.8rem;border-radius:30px;display:inline-block;">
+                    <i class="fas fa-external-link-alt"></i> Apply via institution website
+                  </div>
+                </div>
+              `;
+            });
+            facultyHtml += `</div></div>`;
+          });
+
+          html += `
+            <div class="store-card">
+              <div class="card-img">
+                <img src="${inst.img || 'https://via.placeholder.com/340x140/1a5276/fff?text=Institution'}" alt="${inst.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\\'fas fa-university\\' style=\\'font-size:3.2rem;color:#1a5276;\\'></i>'">
+                <span class="type-flag">${inst.type}</span>
+              </div>
+              <div class="card-body">
+                <div class="store-name">
+                  ${inst.name}
+                  <span class="type-badge">${inst.sector}</span>
+                </div>
+                <div class="store-location"><i class="fas fa-location-dot"></i> ${inst.city}, ${inst.province}</div>
+                <div class="status-line">
+                  <span class="status-badge ${badgeClass}"><i class="fas ${statusIcon}"></i> ${statusText}</span>
+                  <a href="${inst.website}" target="_blank" class="website-btn"><i class="fas fa-external-link-alt"></i> Visit homepage</a>
+                </div>
+                <div class="catalogue-section">
+                  <div class="catalogue-title"><i class="fas fa-book-open"></i> faculties & courses (click course for details)</div>
+                  ${facultyHtml}
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        grid.innerHTML = html;
+      }
+
+      // ---------- Render Bursaries ----------
+      function renderBursaries() {
+        let html = '';
+        bursaries.forEach(b => {
+          html += `
+            <div class="bursary-card">
+              <h3><i class="fas ${b.icon}"></i> ${b.name}</h3>
+              <div class="provider"><i class="fas fa-building"></i> ${b.provider} · <i class="fas fa-hand-holding-usd"></i> ${b.funder} · <a href="${b.website}" target="_blank"><i class="fas fa-external-link-alt"></i> Visit website</a></div>
+              <div class="details">
+                <div><span class="label">Amount:</span> ${b.amount}</div>
+                <div><span class="label">Requirements:</span> ${b.requirements}</div>
+                <div><span class="label">Covers:</span> ${b.covers}</div>
+                <div><span class="label">Excludes:</span> ${b.excludes}</div>
+                <div><span class="label">Deadline:</span> <strong style="color:#c0392b;">${b.deadline}</strong></div>
+                <div style="margin-top:6px;">
+                  <span class="tag"><i class="fas fa-check-circle" style="color:#27ae60;"></i> Apply directly</span>
+                  <span class="tag"><a href="${b.website}" target="_blank" style="color:#1a5276;text-decoration:none;"><i class="fas fa-external-link-alt"></i> Visit funder website</a></span>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        bursaryGrid.innerHTML = html;
+      }
+
+      window.toggleCourseDetail = function(catItem, detailEl) {
+        const card = catItem.closest('.store-card');
+        if (card) {
+          card.querySelectorAll('.course-detail').forEach(d => {
+            if (d !== detailEl) d.classList.remove('show');
+          });
+        }
+        detailEl.classList.toggle('show');
+      };
+
+      // ---------- Events ----------
+      searchInput.addEventListener('input', renderInstitutions);
+      typeFilter.addEventListener('change', renderInstitutions);
+      sectorFilter.addEventListener('change', renderInstitutions);
+      statusFilter.addEventListener('change', renderInstitutions);
+      document.getElementById('showClosedToggle')?.addEventListener('click', renderInstitutions);
+
+      clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        typeFilter.value = 'all';
+        sectorFilter.value = 'all';
+        statusFilter.value = 'all';
+        renderInstitutions();
+      });
+
+      // ---------- Init ----------
+      renderInstitutions();
+      renderBursaries();
+
+      // Handle case where main app is already visible (e.g., after refresh)
+      if (mainApp.classList.contains('visible')) {
+        homepage.style.display = 'none';
+      }
+    })();
+  </script>
+</body>
+</html>
